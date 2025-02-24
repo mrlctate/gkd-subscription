@@ -14,6 +14,8 @@ export default defineGkdApp({
       priorityTime: 10000,
       rules: [
         {
+          key: 1,
+          action: 'clickNode',
           matches: '[text*="跳过"][text.length<10][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/16335041',
         },

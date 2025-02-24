@@ -59,5 +59,22 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 4,
+      name: '功能类-帖子收藏抽空在看',
+      desc: '下次浏览帖子会取消收藏',
+      actionMaximum: 1,
+      activityIds: '.module.bbs.post.ui.activitys.WebNewsPostPageActivity',
+      rules: [
+        {
+          key: 1,
+          fastQuery: true,
+          matches:
+            'LinearLayout[childCount=4] > @LinearLayout[childCount=2][clickable=true][index=1] > [vid="shine_button"] + [vid="text"]',
+          snapshotUrls: 'https://i.gkd.li/i/18907915',
+          exampleUrls: 'https://e.gkd.li/e7603d4d-dc12-4080-8f81-4be6ffec6143',
+        },
+      ],
+    },
   ],
 });

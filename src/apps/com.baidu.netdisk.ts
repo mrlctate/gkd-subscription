@@ -11,20 +11,24 @@ export default defineGkdApp({
       fastQuery: true,
       rules: [
         {
+          key: 2,
+          activityIds: '.module.sharelink.ChainInfoActivity',
+          matches: '[text="为你推荐"] + [desc="关闭"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/18815407',
+        },
+        {
           key: 3,
           activityIds: [
-            'com.baidu.netdisk.business.guide.dialog.lifeproduct.',
-            'com.baidu.netdisk.ui.MainActivity',
-            'com.baidu.netdisk.ui.Navigate',
+            '.business.guide.dialog.lifeproduct.LifeV10GuideDialog',
+            '.ui.MainActivity',
           ],
-          matches: '[vid="iv_close"]',
+          matches: '[id="com.baidu.netdisk:id/iv_close"][clickable=true]',
+          excludeMatches: '[text="选择文件"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/12642505',
             'https://i.gkd.li/i/12783106',
             'https://i.gkd.li/i/12923937',
             'https://i.gkd.li/i/13806852',
-            'https://i.gkd.li/i/14730106',
-            'https://i.gkd.li/i/14822799',
           ],
         },
         {
@@ -74,34 +78,40 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 3,
+      name: '功能类-签到',
+      fastQuery: true,
+      actionMaximum: 1,
+      rules: [
+        {
+          key: 1,
+          activityIds: '.ui.cloudp2p.RichMediaActivity',
+          matches:
+            '[text^="连续签到7天后"] +2 TextView[clickable=true][text^="签到"]',
+          snapshotUrls: 'https://i.gkd.li/i/18762226',
+          exampleUrls: 'https://e.gkd.li/89b963b3-f46c-426b-9439-8244f4ac4836',
+        },
+      ],
+    },
+    {
       key: 6,
       name: '更新提示',
       fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
-      rules: [
-        {
-          activityIds: '.ui.MainActivity',
-          matches: '[text="立即更新"] -2 [text="下次再说"]', //使用ID会导致误触（例如删除确认https://i.gkd.li/i/13069049）
-          snapshotUrls: 'https://i.gkd.li/i/16118181',
-        },
-      ],
+      rules: '[text="立即更新"] -2 [text="下次再说"]', //使用ID会导致误触（例如删除确认https://i.gkd.li/i/13069049）
+      snapshotUrls: 'https://i.gkd.li/i/16118181',
     },
     {
       key: 8,
       name: '权限提示-通知权限',
-      desc: '点击关闭',
-      fastQuery: true,
+      desc: '自动点击关闭',
       matchTime: 10000,
       actionMaximum: 1,
       resetMatch: 'app',
-      rules: [
-        {
-          activityIds: '.ui.MainActivity',
-          matches: 'ImageView[id="com.baidu.netdisk:id/dialog_cancel"]', //单独使用ID会导致误触（例如删除确认https://i.gkd.li/i/13069049）
-          snapshotUrls: 'https://i.gkd.li/i/12923936',
-        },
-      ],
+      fastQuery: true,
+      rules: 'ImageView[id="com.baidu.netdisk:id/dialog_cancel"]', //单独使用ID会导致误触（例如删除确认https://i.gkd.li/i/13069049）
+      snapshotUrls: 'https://i.gkd.li/i/12923936',
     },
     {
       key: 9,
@@ -109,13 +119,8 @@ export default defineGkdApp({
       fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
-      activityIds: '.ui.MainActivity',
-      rules: [
-        {
-          matches: '[vid="view_score_style"] > [text="以后再说"]',
-          snapshotUrls: 'https://i.gkd.li/i/14317054',
-        },
-      ],
+      rules: '[vid="view_score_style"] > [text="以后再说"]',
+      snapshotUrls: 'https://i.gkd.li/i/14317054',
     },
     {
       key: 12,
